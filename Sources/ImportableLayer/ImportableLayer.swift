@@ -42,7 +42,7 @@ public extension ImportableLayer {
             let shape = self[keyPath: keyPath].shape
             if let mapping = map[label], var weights = parameters[mapping.0] {
                 if let permutes = mapping.1 {
-                    weights = weights.transposed(withPermutations: permutes)
+                    weights = weights.transposed(permutation: permutes)
                 }
                 self[keyPath: keyPath] = weights
                 print("imported \(mapping.0) \(shape) -> \(label) \(weights.shape)")
